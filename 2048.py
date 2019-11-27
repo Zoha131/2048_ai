@@ -59,6 +59,8 @@ def win():
     event = pygame.event.wait()
     quitWindow(event)
 
+index_move = 0
+
 
 def gameLoop():
     # Initialize a game board with 16 blocks to store number
@@ -68,19 +70,26 @@ def gameLoop():
         for j in range(4):
             blocks.append([pygame.Rect((i * 100) + 30, (j * 100) + 135, 90, 90), WHITE])
 
-    while True:
-        for event in pygame.event.get():
 
-            quitWindow(event)
-            if event.type == KEYDOWN:
-                if event.key == K_UP:
-                    board = main(board, "u")
-                if event.key == K_DOWN:
-                    board = main(board, "d")
-                if event.key == K_LEFT:
-                    board = main(board, "l")
-                if event.key == K_RIGHT:
-                    board = main(board, "r")
+    while True:
+        # for event in pygame.event.get():
+        #
+        #     quitWindow(event)
+        #     if event.type == KEYDOWN:
+        #         if event.key == K_UP:
+        #             board = main(board, "u")
+        #         if event.key == K_DOWN:
+        #             board = main(board, "d")
+        #         if event.key == K_LEFT:
+        #             board = main(board, "l")
+        #         if event.key == K_RIGHT:
+        #             board = main(board, "r")
+
+        global index_move
+
+        if index_move < len(auto_moves):
+            board = main(board, auto_moves[index_move])
+            index_move = index_move+1
 
         window.fill(WHITE)
         header = myfont.render("2048", True, BLUE)

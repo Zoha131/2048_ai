@@ -34,10 +34,17 @@ def init_board():
     return board
 
 
-auto_s = [2,4,2,4,4,2,4,2,4,2,2,4,4,4,4]
-auto_y = [1,1,3,3,0,0,2,1,1,2,2,0,2,0,0]
-auto_x = [0,2,1,2,1,3,2,3,1,3,1,2,3,0,3]
-auto_moves = ["d","l","l","d","l","d","d","d","d","l","l","d","l","l","l"]
+auto_s = [2,4,2,4,4,2,4,2,4,2,2,4,4,4,4,2,4,2,4,4,2,2,4,2,2,4,4,4,2,4,4,2,4,4,4,2,4,2,4,2,4,2,4,2,4,2,4,2,2,2,4,2,4,2,2,
+          4,2,4,2,2,2,4,2,4,2,4,4,2,2,2]
+auto_y = [1,1,3,3,0,0,2,1,1,2,2,0,2,0,0,1,0,1,0,3,0,0,0,2,3,1,0,1,3,0,1,3,3,3,3,0,0,0,1,2,3,1,3,3,0,2,0,0,0,3,3,3,3,3,3,
+          3,3,3,0,3,0,1,1,0,0,1,0,1,0,1]
+auto_x = [0,2,1,2,1,3,2,3,1,3,1,2,3,0,3,3,3,3,0,3,3,3,2,2,3,2,0,2,3,0,0,3,3,2,3,0,3,3,0,0,3,2,0,3,3,3,3,3,2,3,0,0,3,3,0,
+          1,0,3,3,1,0,3,0,3,3,3,0,0,3,0]
+auto_moves = ["d","l","l","d","l","d","d","d","d","l","l","d","l","l","l","d","r","l", "d", "l","l","l","d","d","d","l",
+              "d","r","l","d","u","l","d","r","l","d","r","l","d","r","u","l","d","l","d","l","d","u","r","u","l","u","r",
+              "u","u","l","d","u","d","l","r","l","d","l","r","d","l","r"]
+
+index = 0
 
 
 
@@ -46,16 +53,16 @@ def addNewNum(board, n):
     """Generates a 2 or 4, and set the number at a random location on board \
     that is originally a 0.
     """
+    global index
 
     for i in range(n):
-        newNum = str(random.choice([2,4]))
-        randomx = random.randrange(4)
-        randomy = random.randrange(4)
-        while board[randomy][randomx] != "0":
-            randomx = random.randrange(4)
-            randomy = random.randrange(4)
+        newNum = str(auto_s[index])
+        randomx = auto_x[index]
+        randomy = auto_y[index]
+
         board[randomy][randomx] = newNum
         print("x: "+str(randomx)+" y:"+str(randomy), " num:"+str(newNum))
+        index = index+1
 
 
 def checkWin(board):
