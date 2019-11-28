@@ -107,7 +107,7 @@ def gameLoop():
 
         pygame.display.update()
 
-        time.sleep(0.02)
+        time.sleep(0.05)
 
 
 gameLoop()
