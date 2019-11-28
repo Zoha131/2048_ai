@@ -50,7 +50,7 @@ def gameOver():
 
 
 def win():
-    window.fill(WHITE)
+    #window.fill(WHITE)
     label = myfont.render("You WIN !!!!!", True, RED)
     labelRect = label.get_rect()
     labelRect.centerx = window.get_rect().centerx
